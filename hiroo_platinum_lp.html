@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIROO PLATINUM GYM｜広尾で、最短で身体を変えるプライベートジム</title>
+<meta name="description" content="港区広尾の完全プライベートジム。週2回で身体は変わる。初回体験0円（毎月10名限定）。初心者からアスリートまで対応の本格マシン完備。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-pale: #F5E6BB;
+    --platinum: #B8C4CC;
+    --black: #0A0A0A;
+    --black-2: #111111;
+    --black-3: #1A1A1A;
+    --black-4: #242424;
+    --white: #FAFAF8;
+    --gray: #888888;
+    --gray-light: #CCCCCC;
+    --accent-red: #C0392B;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Serif JP', serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ===== FLOATING CTA ===== */
+  .float-cta {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.4s;
+    width: min(90vw, 420px);
+    pointer-events: none;
+  }
+  .float-cta.visible { opacity: 1; pointer-events: all; }
+  .float-cta a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #D4A843 0%, #F5D87A 50%, #C9902A 100%);
+    color: var(--black);
+    text-decoration: none;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 500;
+    font-size: clamp(13px, 3.5vw, 15px);
+    padding: 16px 28px;
+    border-radius: 4px;
+    box-shadow: 0 8px 40px rgba(201,168,76,0.55), 0 2px 10px rgba(0,0,0,0.5);
+    letter-spacing: 0.05em;
+    animation: pulseCta 2.5s ease-in-out infinite;
+  }
+  @keyframes pulseCta {
+    0%, 100% { box-shadow: 0 8px 40px rgba(201,168,76,0.55), 0 2px 10px rgba(0,0,0,0.5); }
+    50% { box-shadow: 0 8px 60px rgba(201,168,76,0.85), 0 2px 10px rgba(0,0,0,0.5); }
+  }
+  .float-cta .badge {
+    background: var(--accent-red);
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 2px;
+    letter-spacing: 0.03em;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 120px 24px 80px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201,168,76,0.12) 0%, transparent 70%),
+      linear-gradient(180deg, #0A0A0A 0%, #111111 40%, #0D0D0D 100%);
+    z-index: 0;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  }
+
+  .hero-line-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    animation: heroFadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    max-width: 860px;
+    width: 100%;
+  }
+
+  @keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(201,168,76,0.5);
+    padding: 7px 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .hero-badge::before, .hero-badge::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(13px, 3vw, 16px);
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: heroFadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 9vw, 88px);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: heroFadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero-title .line2 {
+    display: block;
+    font-size: clamp(22px, 5vw, 42px);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--platinum);
+    margin-top: 8px;
+  }
+
+  .hero-divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 28px auto;
+    opacity: 0;
+    animation: heroFadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards;
+  }
+
+  .hero-sub {
+    font-size: clamp(14px, 2.5vw, 17px);
+    color: var(--gray-light);
+    line-height: 2;
+    margin-bottom: 16px;
+    font-weight: 300;
+    opacity: 0;
+    animation: heroFadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) 1.1s forwards;
+  }
+
+  .hero-checks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 28px;
+    margin-bottom: 44px;
+    opacity: 0;
+    animation: heroFadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) 1.3s forwards;
+  }
+  .hero-checks span {
+    font-size: clamp(12px, 2.5vw, 14px);
+    color: var(--gray-light);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-checks span::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  .hero-cta-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    opacity: 0;
+    animation: heroFadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: linear-gradient(135deg, #D4A843 0%, #F5D87A 50%, #C9902A 100%);
+    color: var(--black);
+    text-decoration: none;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 500;
+    font-size: clamp(14px, 3.5vw, 17px);
+    padding: 20px 52px;
+    letter-spacing: 0.08em;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 2px;
+  }
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(201,168,76,0.4);
+  }
+  .btn-primary .btn-sub {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+  }
+  .btn-primary .btn-limit {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: var(--accent-red);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  .hero-note {
+    font-size: 12px;
+    color: var(--gray);
+    letter-spacing: 0.05em;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+    opacity: 0;
+    animation: heroFadeIn 2s ease 2s forwards;
+  }
+  .hero-scroll span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .hero-scroll .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0%, 100% { transform: scaleY(1); opacity: 1; }
+    50% { transform: scaleY(0.5); opacity: 0.4; }
+  }
+
+  /* ===== SECTIONS COMMON ===== */
+  section { padding: clamp(72px, 10vw, 120px) clamp(20px, 5vw, 60px); }
+  .section-inner { max-width: 1060px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(201,168,76,0.4), transparent);
+    max-width: 120px;
+  }
+
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 300;
+    line-height: 1.25;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  .section-heading em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .section-body {
+    font-size: clamp(14px, 2vw, 16px);
+    color: var(--gray-light);
+    line-height: 2;
+    font-weight: 300;
+    max-width: 640px;
+  }
+
+  .gold-line { width: 48px; height: 2px; background: var(--gold); margin-bottom: 32px; }
+
+  /* ===== PAIN SECTION ===== */
+  .pain-section { background: var(--black-2); }
+  .pain-section .section-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+
+  .pain-list { list-style: none; }
+  .pain-list li {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: clamp(14px, 2vw, 16px);
+    color: var(--gray-light);
+    font-weight: 300;
+  }
+  .pain-list li .num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: rgba(201,168,76,0.25);
+    line-height: 1;
+    min-width: 32px;
+  }
+
+  .pain-answer {
+    border-left: 2px solid var(--gold);
+    padding: 20px 24px;
+    background: rgba(201,168,76,0.05);
+    margin-top: 28px;
+    font-size: clamp(13px, 2vw, 15px);
+    color: var(--gray-light);
+    font-weight: 300;
+    line-height: 2;
+  }
+  .pain-answer strong { color: var(--gold-light); font-weight: 500; }
+
+  @media (max-width: 700px) {
+    .pain-section .section-inner { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ===== SOLUTION ===== */
+  .solution-section { background: var(--black); position: relative; overflow: hidden; }
+  .solution-section::before {
+    content: 'PLATINUM';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(80px, 18vw, 200px);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: rgba(201,168,76,0.03);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .solution-section .section-inner { position: relative; z-index: 1; text-align: center; }
+
+  .solution-card {
+    margin: 60px auto 0;
+    max-width: 800px;
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: clamp(32px, 5vw, 56px);
+    position: relative;
+    background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, transparent 60%);
+  }
+  .solution-card::before, .solution-card::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-color: var(--gold);
+    border-style: solid;
+  }
+  .solution-card::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+  .solution-card::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+  .solution-card .big-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .solution-card .big-text em { font-style: italic; color: var(--gold-light); font-size: 1.2em; }
+
+  .solution-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .solution-tags span {
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold-light);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    padding: 8px 20px;
+    text-transform: uppercase;
+  }
+
+  /* ===== BENEFITS ===== */
+  .benefits-section { background: var(--black-3); }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.15);
+    margin-top: 52px;
+  }
+  @media (max-width: 700px) { .benefits-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 420px) { .benefits-grid { grid-template-columns: 1fr; } }
+
+  .benefit-card {
+    background: var(--black-3);
+    padding: 36px 28px;
+    transition: background 0.3s;
+  }
+  .benefit-card:hover { background: rgba(201,168,76,0.05); }
+  .benefit-card .icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .benefit-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .benefit-card p {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* ===== USP / WHY CHOOSE ===== */
+  .usp-section { background: var(--black-2); }
+  .usp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 52px;
+  }
+  @media (max-width: 700px) { .usp-grid { grid-template-columns: 1fr; } }
+
+  .usp-card {
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .usp-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-4px); }
+  .usp-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .usp-card:hover::after { transform: scaleX(1); }
+
+  .usp-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: rgba(201,168,76,0.15);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .usp-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3vw, 26px);
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .usp-card p { font-size: 14px; color: var(--gray); line-height: 1.9; font-weight: 300; }
+  .usp-card .tag {
+    display: inline-block;
+    margin-top: 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .usp-card .tag::before { content: '— '; }
+
+  /* ===== RESULTS ===== */
+  .results-section { background: var(--black); }
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 52px;
+  }
+  @media (max-width: 700px) { .results-grid { grid-template-columns: 1fr; } }
+
+  .result-card {
+    border: 1px solid rgba(201,168,76,0.2);
+    overflow: hidden;
+    position: relative;
+  }
+  .result-card .result-image {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: var(--black-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .result-card .result-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, transparent 60%);
+  }
+  .result-card .result-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .result-card .result-desc {
+    font-size: 13px;
+    color: var(--gray-light);
+    font-weight: 300;
+    text-align: center;
+    padding: 0 16px;
+  }
+  .result-card .result-body {
+    padding: 20px;
+    background: var(--black-3);
+  }
+  .result-card .result-body h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .result-card .result-body p { font-size: 12px; color: var(--gray); line-height: 1.8; font-weight: 300; }
+
+  /* ===== VOICES ===== */
+  .voices-section { background: var(--black-2); }
+  .voices-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 52px;
+  }
+  @media (max-width: 700px) { .voices-grid { grid-template-columns: 1fr; } }
+
+  .voice-card {
+    padding: 32px;
+    border: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+  }
+  .voice-card::before {
+    content: '"';
+    position: absolute;
+    top: 12px;
+    left: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    color: rgba(201,168,76,0.15);
+    line-height: 1;
+    font-style: italic;
+  }
+  .voice-stars { color: var(--gold); font-size: 13px; margin-bottom: 16px; letter-spacing: 2px; }
+  .voice-text {
+    font-size: clamp(14px, 2vw, 16px);
+    color: var(--gray-light);
+    line-height: 1.9;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+  .voice-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .voice-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(201,168,76,0.3), rgba(201,168,76,0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+  .voice-name { font-size: 13px; color: var(--gray); }
+  .voice-name strong { display: block; font-size: 14px; color: var(--white); font-weight: 400; }
+
+  /* ===== OFFER BOX ===== */
+  .offer-section { background: var(--black); padding: clamp(60px, 8vw, 100px) clamp(20px, 5vw, 60px); }
+  .offer-box {
+    max-width: 860px;
+    margin: 0 auto;
+    border: 1px solid var(--gold);
+    padding: clamp(40px, 6vw, 72px);
+    text-align: center;
+    position: relative;
+    background: linear-gradient(135deg, rgba(201,168,76,0.07) 0%, transparent 50%);
+  }
+  .offer-box::before, .offer-box::after {
+    content: '';
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border-color: var(--gold);
+    border-style: solid;
+  }
+  .offer-box::before { top: -2px; left: -2px; border-width: 3px 0 0 3px; }
+  .offer-box::after  { bottom: -2px; right: -2px; border-width: 0 3px 3px 0; }
+
+  .offer-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .offer-price-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 16px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+  }
+  .offer-old {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(18px, 4vw, 24px);
+    color: var(--gray);
+    text-decoration: line-through;
+    font-weight: 300;
+  }
+  .offer-new {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(52px, 12vw, 88px);
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .offer-new sub {
+    font-size: 0.3em;
+    vertical-align: middle;
+    color: var(--gold-light);
+  }
+
+  .offer-perks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 28px 0;
+  }
+  .offer-perks span {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold-light);
+    font-size: clamp(12px, 2.5vw, 14px);
+    padding: 8px 20px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .offer-perks span::before { content: '✓'; color: var(--gold); }
+
+  .offer-note {
+    font-size: 12px;
+    color: var(--gray);
+    margin-bottom: 36px;
+    line-height: 2;
+  }
+  .offer-note strong { color: var(--accent-red); font-weight: 500; }
+
+  .btn-offer {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #D4A843 0%, #F5D87A 50%, #C9902A 100%);
+    color: var(--black);
+    text-decoration: none;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 500;
+    font-size: clamp(15px, 3.5vw, 19px);
+    padding: 22px 64px;
+    letter-spacing: 0.1em;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 2px;
+    width: min(100%, 400px);
+  }
+  .btn-offer:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 64px rgba(201,168,76,0.45);
+  }
+  .btn-offer .sub { font-size: 11px; opacity: 0.7; font-weight: 400; }
+
+  /* ===== FLOW ===== */
+  .flow-section { background: var(--black-3); }
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 640px;
+    margin: 52px auto 0;
+    position: relative;
+  }
+  .flow-steps::before {
+    content: '';
+    position: absolute;
+    left: 23px;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: linear-gradient(180deg, var(--gold), rgba(201,168,76,0.1));
+  }
+  .flow-step {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    padding: 20px 0;
+  }
+  .flow-step-num {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--gold);
+    background: var(--black-3);
+    position: relative;
+    z-index: 1;
+  }
+  .flow-step-body h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .flow-step-body p { font-size: 13px; color: var(--gray); line-height: 1.8; font-weight: 300; }
+
+  .flow-note {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
+    color: var(--gray);
+    padding: 16px 24px;
+    border: 1px solid rgba(255,255,255,0.07);
+    display: inline-block;
+  }
+  .flow-note strong { color: var(--gold-light); }
+
+  /* ===== FAQ ===== */
+  .faq-section { background: var(--black-2); }
+  .faq-list { max-width: 760px; margin: 52px auto 0; }
+  .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--white);
+    text-align: left;
+    padding: 24px 0;
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(14px, 2.5vw, 16px);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .faq-q:hover { color: var(--gold-light); }
+  .faq-icon {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border: 1px solid rgba(201,168,76,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--gold);
+    transition: transform 0.3s;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .faq-item.open .faq-a { max-height: 300px; }
+  .faq-a-inner {
+    padding: 0 0 24px 24px;
+    font-size: clamp(13px, 2vw, 15px);
+    color: var(--gray-light);
+    line-height: 2;
+    font-weight: 300;
+    border-left: 2px solid rgba(201,168,76,0.3);
+  }
+
+  /* ===== FINAL CTA ===== */
+  .final-section {
+    background: var(--black);
+    text-align: center;
+    padding: clamp(80px, 10vw, 140px) clamp(20px, 5vw, 60px);
+    position: relative;
+    overflow: hidden;
+  }
+  .final-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(600px, 80vw);
+    height: min(600px, 80vw);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .final-section .section-inner { position: relative; z-index: 1; }
+
+  .final-message {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4.5vw, 42px);
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .final-message em { font-style: italic; color: var(--gold-light); }
+
+  .final-sub {
+    font-size: clamp(13px, 2vw, 16px);
+    color: var(--gray-light);
+    line-height: 2;
+    max-width: 560px;
+    margin: 0 auto 52px;
+    font-weight: 300;
+  }
+  .final-sub strong { color: var(--gold-light); font-weight: 500; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--black-2);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 60px clamp(20px, 5vw, 60px) 40px;
+  }
+  .footer-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+  }
+  @media (max-width: 700px) { .footer-inner { grid-template-columns: 1fr; gap: 32px; } }
+
+  .footer-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--gold-light);
+    margin-bottom: 16px;
+  }
+  .footer-tagline { font-size: 12px; color: var(--gray); font-weight: 300; line-height: 1.8; }
+
+  .footer-col h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .footer-col p, .footer-col a {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 2;
+    font-weight: 300;
+    text-decoration: none;
+    display: block;
+  }
+  .footer-col a:hover { color: var(--gold-light); }
+
+  .footer-bottom {
+    max-width: 1060px;
+    margin: 40px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.1em; }
+
+  .footer-sns { display: flex; gap: 16px; }
+  .footer-sns a {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--gold);
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .footer-sns a:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== POPUP ===== */
+  .popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9998;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0 16px 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+  }
+  .popup-overlay.show { opacity: 1; pointer-events: all; }
+  .popup-box {
+    background: var(--black-3);
+    border: 1px solid var(--gold);
+    padding: 28px 32px;
+    max-width: 420px;
+    width: 100%;
+    position: relative;
+    transform: translateY(40px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .popup-overlay.show .popup-box { transform: translateY(0); }
+  .popup-close {
+    position: absolute;
+    top: 12px; right: 16px;
+    background: none;
+    border: none;
+    color: var(--gray);
+    font-size: 22px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .popup-close:hover { color: var(--white); }
+  .popup-badge { color: var(--accent-red); font-family: 'Barlow Condensed', sans-serif; font-size: 13px; letter-spacing: 0.15em; font-weight: 700; margin-bottom: 8px; }
+  .popup-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; color: var(--white); margin-bottom: 6px; }
+  .popup-sub { font-size: 13px; color: var(--gray-light); font-weight: 300; line-height: 1.8; margin-bottom: 20px; }
+  .popup-cta {
+    display: block;
+    background: linear-gradient(135deg, #D4A843 0%, #F5D87A 50%, #C9902A 100%);
+    color: var(--black);
+    text-decoration: none;
+    text-align: center;
+    padding: 16px;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    border-radius: 2px;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ===== FLOATING CTA ===== -->
+<div class="float-cta" id="floatCta">
+  <a href="#offer">
+    <span class="badge">毎月10名限定</span>
+    初回体験 <strong>0円</strong> — 今すぐ予約する
+  </a>
+</div>
+
+<!-- ===== EXIT POPUP ===== -->
+<div class="popup-overlay" id="popup">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup()">×</button>
+    <div class="popup-badge">⚠ 残り少数</div>
+    <div class="popup-title">今月の体験枠、あとわずかです。</div>
+    <div class="popup-sub">毎月10名限定の無料体験。ご予約はお早めに。無理な勧誘は一切ありません。</div>
+    <a href="https://reserva.be/hirooplatinumgym" target="_blank" class="popup-cta">無料で体験を予約する →</a>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-line-top"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">Hiroo Platinum Gym — Since 2016</div>
+    <div class="hero-eyebrow">港区南麻布 · Private Training Gym</div>
+    <h1 class="hero-title">
+      たった週2回で、<em>身体は変わる。</em>
+      <span class="line2">広尾で選ばれる"結果重視"のプライベートジム</span>
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">あなた専用のトレーニングで、最短ルートの変化を。</p>
+    <div class="hero-checks">
+      <span>運動が続かなかった方へ</span>
+      <span>自己流で変わらなかった方へ</span>
+      <span>忙しくても効率よく鍛えたい方へ</span>
+    </div>
+    <div class="hero-cta-wrap">
+      <a href="https://reserva.be/hirooplatinumgym" target="_blank" class="btn-primary">
+        <span class="btn-limit">毎月10名限定</span>
+        【今だけ】初回体験トレーニング 無料
+        <span class="btn-sub">通常 ¥2,000 → ¥0（カウンセリング込み）</span>
+      </a>
+      <p class="hero-note">無理な勧誘は一切ありません · 当日入会で入会金無料</p>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ===== PAIN ===== -->
+<section class="pain-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Pain Points</div>
+      <h2 class="section-heading">こんなお悩み、<em>ありませんか？</em></h2>
+      <div class="gold-line"></div>
+      <ul class="pain-list">
+        <li><span class="num">01</span>ジムに通っても、気づいたら続かなくなっていた</li>
+        <li><span class="num">02</span>食事制限を頑張っても、すぐにリバウンドしてしまう</li>
+        <li><span class="num">03</span>自己流でトレーニングしているが、体型に変化がない</li>
+        <li><span class="num">04</span>仕事が忙しく、まとまった時間を確保できない</li>
+        <li><span class="num">05</span>周囲の目が気になり、集中してトレーニングできない</li>
+      </ul>
+      <div class="pain-answer">
+        <strong>変わらなかったのは、あなたのせいではありません。</strong><br>
+        原因は「やり方」と「環境」が間違っていただけ。正しい方法と場所さえあれば、身体は必ず変わります。
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:0.15s">
+      <div class="section-label" style="margin-top:0">Our Answer</div>
+      <h2 class="section-heading">その悩み、<em>解決できます。</em></h2>
+      <div class="gold-line"></div>
+      <p class="section-body">
+        HIROO PLATINUM GYMでは、あなたの体質・生活リズム・目的に合わせた<strong style="color:var(--gold-light);font-weight:500">完全オーダーメイドプログラム</strong>を提供しています。首都圏屈指の本格マシンと、専属トレーナーによるマンツーマン指導で、最短距離で理想の身体へ。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOLUTION ===== -->
+<section class="solution-section">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center">
+      <div class="section-label" style="justify-content:center">Our Philosophy</div>
+      <h2 class="section-heading">「ジム」ではなく、<em>結果が出る場所。</em></h2>
+    </div>
+    <div class="solution-card reveal" style="transition-delay:0.2s">
+      <div class="big-text">
+        初心者からプロアスリートまで。<br>
+        <em>首都圏屈指の最先端マシン</em>と、<br>
+        専属トレーナーの完全サポートで——<br>
+        あなたの理想を、現実に変える。
+      </div>
+      <div class="solution-tags">
+        <span>Complete Privacy</span>
+        <span>Pro-Grade Equipment</span>
+        <span>Personal Training</span>
+        <span>24h Open</span>
+        <span>Tanning & O₂ Capsule</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BENEFITS ===== -->
+<section class="benefits-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Benefits</div>
+      <h2 class="section-heading">このジムで<em>得られるもの</em></h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="benefits-grid reveal" style="transition-delay:0.15s">
+      <div class="benefit-card">
+        <span class="icon">⚡</span>
+        <h3>無駄のない効率的なトレーニング</h3>
+        <p>週2回・1時間で最大の効果。忙しいあなたの時間を最大限に活かします。</p>
+      </div>
+      <div class="benefit-card">
+        <span class="icon">🏆</span>
+        <h3>確実に変化する身体</h3>
+        <p>個人に合わせたプログラムだから、「やっても変わらない」がなくなります。</p>
+      </div>
+      <div class="benefit-card">
+        <span class="icon">🔄</span>
+        <h3>リバウンドしにくい習慣</h3>
+        <p>食事・運動・回復のトータルサポートで、一生モノの身体の使い方を習得。</p>
+      </div>
+      <div class="benefit-card">
+        <span class="icon">✨</span>
+        <h3>自信のある見た目</h3>
+        <p>タンニングマシン・酸素カプセルで、外見の輝きも同時に手に入れる。</p>
+      </div>
+      <div class="benefit-card">
+        <span class="icon">🔒</span>
+        <h3>人目を気にしない環境</h3>
+        <p>完全プライベート空間だから、他人の目を一切気にせず集中できます。</p>
+      </div>
+      <div class="benefit-card">
+        <span class="icon">📍</span>
+        <h3>広尾という贅沢な時間</h3>
+        <p>港区南麻布という質の高い立地で、日常から切り離された充実の時間を。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== USP ===== -->
+<section class="usp-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Why Choose Us</div>
+      <h2 class="section-heading">なぜ、選ばれるのか。</h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="usp-grid">
+      <div class="usp-card reveal" style="transition-delay:0.05s">
+        <div class="usp-num">01</div>
+        <h3>プロ仕様マシン完備</h3>
+        <p>トップアスリートも通う首都圏屈指の本格設備。4K 3Dパノラマで内観を公開。見てわかる、本物の環境。</p>
+        <span class="tag">最短で結果へ</span>
+      </div>
+      <div class="usp-card reveal" style="transition-delay:0.1s">
+        <div class="usp-num">02</div>
+        <h3>完全プライベート空間</h3>
+        <p>会員同士が重なりにくいように設計された空間。人目を気にせず集中できるから、継続率が圧倒的に高い。</p>
+        <span class="tag">継続率No.1の理由</span>
+      </div>
+      <div class="usp-card reveal" style="transition-delay:0.15s">
+        <div class="usp-num">03</div>
+        <h3>パーソナルトレーニング</h3>
+        <p>初心者でも安心。専属トレーナーがマンツーマンで寄り添い、あなたの目標までの最短ルートを設計します。</p>
+        <span class="tag">挫折させないサポート</span>
+      </div>
+      <div class="usp-card reveal" style="transition-delay:0.2s">
+        <div class="usp-num">04</div>
+        <h3>広尾・南麻布の立地</h3>
+        <p>港区南麻布4丁目。落ち着いた高級住宅街に佇むジムで、日常と切り離した「本物の時間」を。24時間年中無休。</p>
+        <span class="tag">質の高い環境</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESULTS ===== -->
+<section class="results-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Real Results</div>
+      <h2 class="section-heading">実際に、<em>変わっています。</em></h2>
+      <div class="gold-line"></div>
+      <p class="section-body">大会出場者から産後ダイエットまで、多様な目標を達成した会員様の成果の一部です。</p>
+    </div>
+    <div class="results-grid">
+      <div class="result-card reveal" style="transition-delay:0.05s">
+        <div class="result-image">
+          <div class="result-label">−7kg</div>
+          <div class="result-desc">3ヶ月のパーソナルトレーニングで<br>体重 −7kg・体脂肪 −6%</div>
+        </div>
+        <div class="result-body">
+          <h4>40代男性 · 経営者</h4>
+          <p>週2回・各60分のセッション。食事指導と組み合わせて3ヶ月で劇的変化。</p>
+        </div>
+      </div>
+      <div class="result-card reveal" style="transition-delay:0.1s">
+        <div class="result-image">
+          <div class="result-label">大会入賞</div>
+          <div class="result-desc">フィジーク大会にて<br>初出場でTOP3入賞</div>
+        </div>
+        <div class="result-body">
+          <h4>30代男性 · 会社員</h4>
+          <p>本格マシンとプロ指導で大会出場を実現。「ここでなければ叶わなかった」</p>
+        </div>
+      </div>
+      <div class="result-card reveal" style="transition-delay:0.15s">
+        <div class="result-image">
+          <div class="result-label">産後復帰</div>
+          <div class="result-desc">産後5ヶ月で<br>体型完全リカバリー</div>
+        </div>
+        <div class="result-body">
+          <h4>30代女性 · 主婦</h4>
+          <p>プライベート空間だから子育て中でも通えた。理想の体型を取り戻しました。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VOICES ===== -->
+<section class="voices-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Testimonials</div>
+      <h2 class="section-heading">お客様の<em>声</em></h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="voices-grid">
+      <div class="voice-card reveal" style="transition-delay:0.05s">
+        <div class="voice-stars">★★★★★</div>
+        <p class="voice-text">今まで何度もジムに入会しては辞めてを繰り返していましたが、ここは初めて継続できています。プライベートな空間と丁寧な指導のおかげで、毎回のトレーニングが楽しみになりました。</p>
+        <div class="voice-author">
+          <div class="voice-avatar">Y.T</div>
+          <div class="voice-name"><strong>Y.T 様</strong>35歳 · 会社員</div>
+        </div>
+      </div>
+      <div class="voice-card reveal" style="transition-delay:0.1s">
+        <div class="voice-stars">★★★★★</div>
+        <p class="voice-text">短時間でもしっかり効いているのが体感でわかります。週2回でもこれほど変わるとは思っていませんでした。仕事が忙しい自分でも続けられる最高の環境です。</p>
+        <div class="voice-author">
+          <div class="voice-avatar">K.M</div>
+          <div class="voice-name"><strong>K.M 様</strong>42歳 · 医師</div>
+        </div>
+      </div>
+      <div class="voice-card reveal" style="transition-delay:0.15s">
+        <div class="voice-stars">★★★★★</div>
+        <p class="voice-text">人目が全く気にならないのが最高です。設備も首都圏でここまでのレベルはなかなかないと思います。タンニングマシンと酸素カプセルも合わせて使っています。</p>
+        <div class="voice-author">
+          <div class="voice-avatar">A.S</div>
+          <div class="voice-name"><strong>A.S 様</strong>29歳 · モデル</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OFFER ===== -->
+<section class="offer-section" id="offer">
+  <div class="offer-box reveal">
+    <div class="offer-eyebrow">Limited Offer · 毎月10名様限定</div>
+    <h2 class="section-heading" style="margin-bottom:8px">初回体験トレーニング</h2>
+    <div class="offer-price-row">
+      <span class="offer-old">通常 ¥2,000</span>
+      <div class="offer-new"><sub>¥</sub>0</div>
+    </div>
+    <div class="offer-perks">
+      <span>体験トレーニング60分</span>
+      <span>カウンセリング・体組成測定</span>
+      <span>当日入会で入会金無料</span>
+      <span>パーソナル1回プレゼント</span>
+    </div>
+    <p class="offer-note">
+      <strong>⚠ 毎月10名様限定。定員に達し次第、受付終了となります。</strong><br>
+      無理な勧誘は一切ありません。体験後のご入会は完全任意です。
+    </p>
+    <a href="https://reserva.be/hirooplatinumgym" target="_blank" class="btn-offer">
+      今すぐ無料体験を予約する
+      <span class="sub">24時間オンライン予約受付中</span>
+    </a>
+    <p style="margin-top:20px;font-size:12px;color:var(--gray)">
+      📞 お電話でのご予約: <a href="tel:03-6277-2064" style="color:var(--gold-light);text-decoration:none">03-6277-2064</a>
+    </p>
+  </div>
+</section>
+
+<!-- ===== FLOW ===== -->
+<section class="flow-section">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center">
+      <div class="section-label" style="justify-content:center">How It Works</div>
+      <h2 class="section-heading">利用の<em>流れ</em></h2>
+      <div class="gold-line" style="margin-left:auto;margin-right:auto"></div>
+    </div>
+    <div class="flow-steps">
+      <div class="flow-step reveal" style="transition-delay:0.05s">
+        <div class="flow-step-num">01</div>
+        <div class="flow-step-body">
+          <h4>予約フォームから申し込み</h4>
+          <p>オンラインまたはお電話で、ご都合の良いお時間をお選びください。24時間受付中。</p>
+        </div>
+      </div>
+      <div class="flow-step reveal" style="transition-delay:0.1s">
+        <div class="flow-step-num">02</div>
+        <div class="flow-step-body">
+          <h4>来店 · カウンセリング</h4>
+          <p>現在のお身体の状態・生活リズム・理想の目標を丁寧にヒアリングします。</p>
+        </div>
+      </div>
+      <div class="flow-step reveal" style="transition-delay:0.15s">
+        <div class="flow-step-num">03</div>
+        <div class="flow-step-body">
+          <h4>体験トレーニング（60分）</h4>
+          <p>専属トレーナーがマンツーマンで、あなただけのメニューで実際にトレーニング。</p>
+        </div>
+      </div>
+      <div class="flow-step reveal" style="transition-delay:0.2s">
+        <div class="flow-step-num">04</div>
+        <div class="flow-step-body">
+          <h4>プラン提案</h4>
+          <p>あなたの目標・ライフスタイルに合わせた最適なプログラムをご提案します。</p>
+        </div>
+      </div>
+      <div class="flow-step reveal" style="transition-delay:0.25s">
+        <div class="flow-step-num">05</div>
+        <div class="flow-step-body">
+          <h4>ご入会（完全任意）</h4>
+          <p>体験後のご入会は完全に任意です。無理なお誘いや勧誘は一切行いません。</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <div class="flow-note reveal" style="transition-delay:0.3s">
+        <strong>動きやすい服装でお越しください。手ぶらでもOKです。</strong><br>
+        <span style="font-size:12px">シューズ・タオルの貸し出しあり</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-heading">よくある<em>ご質問</em></h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="faq-list reveal" style="transition-delay:0.1s">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          初心者でも大丈夫ですか？
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">もちろん大丈夫です。現在ご利用の会員様の大半が、運動未経験・久しぶりの方です。専属トレーナーが一から丁寧にサポートしますので、安心してお越しください。</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          どれくらいで効果が出ますか？
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">個人差はありますが、早い方で1ヶ月で体重・体型の変化を実感されています。週2回の継続で、3ヶ月後には周囲からも気づかれるような変化が出ることが多いです。</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          服装や持ち物は何が必要ですか？
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">動きやすい服装でお越しいただければOKです。トレーニングシューズ・タオルの貸し出しも行っておりますので、手ぶらでも問題ありません。</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          女性一人でも通いやすいですか？
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">はい。完全プライベート空間のため、女性の会員様も多数いらっしゃいます。他の利用者と重なりにくい設計のため、安心して集中できる環境です。</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          体験後に入会を強制されませんか？
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">ご安心ください。体験後のご入会は完全任意です。当ジムでは「無理な勧誘は一切しない」をポリシーとしています。プランのご説明はしますが、最終的なご判断はお客様に委ねています。</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          営業時間を教えてください。
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">プレミア会員様は24時間ご利用いただけます。一般会員様は全日10:00〜22:00、DAY会員様は全日10:00〜16:00です。定休日は年中無休です。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="final-message">
+        身体は、正しい方法でやれば<em>必ず変わります。</em><br>
+        変わらなかったのは、あなたのせいではない。
+      </p>
+      <p class="final-sub">
+        環境とやり方が、違っただけです。<br>
+        <strong>HIROO PLATINUM GYM</strong>で、あなたの理想を現実にしましょう。
+      </p>
+      <a href="https://reserva.be/hirooplatinumgym" target="_blank" class="btn-offer" style="margin:0 auto">
+        【今だけ】初回体験 0円 — 今すぐ予約する
+        <span class="sub">毎月10名限定 · 残枠わずか</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">HIROO PLATINUM GYM</div>
+      <p class="footer-tagline">初心者からプロアスリートまで。<br>首都圏屈指の本格設備と<br>完全プライベート空間。</p>
+    </div>
+    <div class="footer-col">
+      <h4>Access</h4>
+      <p>〒106-0047</p>
+      <p>港区南麻布4-12-26 草間ビルB1F</p>
+      <p style="margin-top:8px">最寄り駅: 広尾駅 徒歩約8分</p>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <p>営業: プレミア 24h / 一般 10:00〜22:00</p>
+      <p>定休: 年中無休</p>
+      <a href="tel:03-6277-2064" style="margin-top:8px;color:var(--gold-light)">📞 03-6277-2064</a>
+      <a href="mailto:platinum---gym@pumpup.co.jp">✉ お問い合わせ</a>
+      <a href="https://kingplatinum-gym.jp/price/" target="_blank">料金表はこちら</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2016 HIROO PLATINUM GYM. All Rights Reserved.</span>
+    <div class="footer-sns">
+      <a href="https://www.instagram.com/platinum____gym" target="_blank" title="Instagram">IG</a>
+      <a href="https://liff.line.me/1645278921-kWRPP32q/?accountId=895fwdwe" target="_blank" title="LINE">LN</a>
+      <a href="tel:03-6277-2064" title="Phone">☎</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ===== SCROLL REVEAL =====
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ===== FLOATING CTA =====
+  const floatCta = document.getElementById('floatCta');
+  window.addEventListener('scroll', () => {
+    floatCta.classList.toggle('visible', window.scrollY > 600);
+  });
+
+  // ===== FAQ ACCORDION =====
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // ===== EXIT INTENT POPUP =====
+  let popupShown = false;
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY < 0 && !popupShown) {
+      popupShown = true;
+      document.getElementById('popup').classList.add('show');
+    }
+  });
+
+  // Mobile: show popup after 40s
+  setTimeout(() => {
+    if (!popupShown) {
+      popupShown = true;
+      document.getElementById('popup').classList.add('show');
+    }
+  }, 40000);
+
+  function closePopup() {
+    document.getElementById('popup').classList.remove('show');
+  }
+
+  // Close on overlay click
+  document.getElementById('popup').addEventListener('click', function(e) {
+    if (e.target === this) closePopup();
+  });
+</script>
+
+</body>
+</html>
